@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistroActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Empresas Industriales de Mexico"
+                android:textColor="@color/purple"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:gravity="center"
+                android:text="Registrar"
+                android:textColor="@color/purple"
+                android:textStyle="bold"
+                android:textSize="30sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="48sp"
+                android:layout_marginBottom="10dp"
+                android:hint="Ingrese el nombre de usuario"
+                />
+
+            <EditText
+                android:id="@+id/txtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="48sp"
+                android:layout_marginBottom="10dp"
+                android:hint="ingrese el correo electronico"
+                />
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48sp"
+                android:layout_marginBottom="10dp"
+                android:hint="Ingrese la contraseña"
+                android:inputType="textPassword"
+                />
+
+            <EditText
+                android:id="@+id/txtPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="48sp"
+                android:layout_marginBottom="10dp"
+                android:hint="Confirmar la contraseña"
+                android:inputType="textPassword"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/btnRegistrarse"
+                android:layout_width="130dp"
+
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Resgistrarse"/>
+
+            <Button
+                android:id="@+id/btnIngresar"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Ingresar"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
