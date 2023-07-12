@@ -40,7 +40,8 @@
                 android:id="@+id/txtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="48sp"
-                android:hint="Contraseña"/>
+                android:hint="Contraseña"
+                android:inputType="textPassword"/>
 
 
         </LinearLayout>

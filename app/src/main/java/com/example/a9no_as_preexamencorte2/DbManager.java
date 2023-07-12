@@ -41,7 +41,7 @@ public class DbManager extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.getCount() == 0) {
             // No se encontró el usuario "admin", se agrega a la tabla
-            db.execSQL("INSERT INTO " + TABLE_USUARIOS + " (" + COLUMN_USERNAME + ", " + COLUMN_CORREO + ", " + COLUMN_CONTRASEÑA + ") VALUES ('admin', 'admin@gmail.com', 'admin')");
+            db.execSQL("INSERT INTO " + TABLE_USUARIOS + " (" + COLUMN_USERNAME + ", " + COLUMN_CORREO + ", " + COLUMN_CONTRASEÑA + ") VALUES ('admin', 'admin', 'admin')");
         }
 
         // Cierra el cursor
@@ -90,6 +90,28 @@ public class DbManager extends SQLiteOpenHelper {
         return inicioSesionExitoso;
     }
 
+    public boolean validarNuevoRegistro(String correo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Consulta para buscar si existe una coincidencia de correo
+        String query = "SELECT * FROM " + TABLE_USUARIOS + " WHERE " + COLUMN_CORREO + " = ?";
+        String[] selectionArgs = {correo};
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        boolean registroExitoso = false;
+
+        if (cursor.getCount() > 0) {
+            // Se encontró una coincidencia de correo
+            registroExitoso = true;
+        }
+
+        // Cierra el cursor (no es necesario cerrar explícitamente la base de datos)
+
+        cursor.close();
+
+        return registroExitoso;
+    }
+
 
     public void aggUsuario(String userName, String correo, String password) {
         // Agrega un nuevo usuario a la base de datos
@@ -118,7 +140,8 @@ public class DbManager extends SQLiteOpenHelper {
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USUARIOS, null);
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USUARIOS + " WHERE " + COLUMN_USERNAME + " <> 'admin'", null);
 
         if (cursor != null && cursor.moveToFirst()) {
             int columnIndexId = cursor.getColumnIndex(COLUMN_ID);
